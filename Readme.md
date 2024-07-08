@@ -23,21 +23,22 @@ AutoAvenue is a car dealership web application built with Flask, SQLAlchemy, Fla
 - SQLite (default, can be configured for other databases)
 
 ## Installation
+`pipenv install`
 
 ### Clone the repository
 
 
-git clone 
-cd autoavenue
-pipenv install
+- git clone 
+- cd autoavenue
+- pipenv install
 
 
 # Run migrations 
-flask db init  # Initialize migrations (if not already initialized)
-flask db migrate -m "Initial migration"  # Create migration script
-flask db upgrade  # Apply migration to the database
+- flask db init  # Initialize migrations (if not already initialized)
+- flask db migrate -m "Initial migration"  # Create migration script
+- flask db upgrade  # Apply migration to the database
 
 # Run the application
-flask run
+- flask run
 
 

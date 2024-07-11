@@ -61,6 +61,7 @@ class AddProducts(Resource):
             db.session.rollback()
             return make_response(jsonify({"Message": f"Error adding product: {str(e)}"}), 500)
 
+
 # Delete Product Endpoint
 class DeleteProduct(Resource):
     @jwt_required()

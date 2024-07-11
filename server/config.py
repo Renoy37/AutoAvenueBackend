@@ -18,18 +18,19 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')
+app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = ' befjuyk//t[trht]'
 app.config['SESSION_TYPE'] = 'filesystem'
 SECRET_KEY = app.config['SECRET_KEY'] = 'bjhjh43j554h63%#@n32@#' 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'hgcfyi876tgh')
 
-# cloudinary.config( 
-#   cloud_name = 'dol3eg0to',
-#   api_key = '843678846326154',
-#   api_secret = 'qWeEH2FpH50S8ctME2xpv-tLKtI'
-# )
+cloudinary.config( 
+  cloud_name = 'dol3eg0to',
+  api_key = '843678846326154',
+  api_secret = 'qWeEH2FpH50S8ctME2xpv-tLKtI'
+)
 
 # cloudinary.config( 
 #     cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),

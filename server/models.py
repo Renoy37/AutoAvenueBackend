@@ -9,7 +9,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    _password_hash = db.Column(db.String(200), nullable=False)
+    _password_hash = db.Column(db.String(250), nullable=False)
     role = db.Column(db.String(50), nullable=False)
     orders = db.relationship('Order', backref='user', lazy=True)
 
@@ -48,7 +48,7 @@ class Car(db.Model, SerializerMixin):
     carEngine = db.Column(db.String(50), nullable=False)
     carTransmission = db.Column(db.String(50), nullable=False)
     carFuel = db.Column(db.String(50), nullable=False)
-    carDescription = db.Column(db.String(255), nullable=False)
+    carDescription = db.Column(db.String(280), nullable=False)
     seller_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     orders = db.relationship('Order', backref='car', lazy=True, cascade='all, delete')
 

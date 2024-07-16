@@ -11,33 +11,30 @@ import cloudinary
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 
-
-
+# Load environment variables from .env file
 load_dotenv()
-
 
 # Initialize Flask app
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')
-app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URI')
+
+# Configure database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = ' befjuyk//t[trht]'
-app.config['SESSION_TYPE'] = 'filesystem'
-SECRET_KEY = app.config['SECRET_KEY'] = 'bjhjh43j554h63%#@n32@#' 
+
+# Configure secret key
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'hgcfyi876tgh')
 
-cloudinary.config( 
-  cloud_name = 'dol3eg0to',
-  api_key = '843678846326154',
-  api_secret = 'qWeEH2FpH50S8ctME2xpv-tLKtI'
+# Configure session type
+app.config['SESSION_TYPE'] = 'filesystem'
+
+# Configure Cloudinary
+cloudinary.config(
+  cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'dol3eg0to'),
+  api_key=os.getenv('CLOUDINARY_API_KEY', '843678846326154'),
+  api_secret=os.getenv('CLOUDINARY_API_SECRET', '3k2jb4v56bn5m4,l3;4l5kmn6bv7')
 )
 
-# cloudinary.config( 
-#     cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
-#     api_key = os.getenv('CLOUDINARY_API_KEY'),
-#     api_secret = os.getenv('CLOUDINARY_API_SECRET')
-# )
-
+# Configure SQLAlchemy metadata
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
 })

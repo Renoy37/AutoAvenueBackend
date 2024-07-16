@@ -30,10 +30,15 @@ SECRET_KEY = app.config['SECRET_KEY']
 app.config['SESSION_TYPE'] = 'filesystem'
 
 # Configure Cloudinary
-cloudinary.config(
-  cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'dol3eg0to'),
-  api_key=os.getenv('CLOUDINARY_API_KEY', '843678846326154'),
-  api_secret=os.getenv('CLOUDINARY_API_SECRET', 'qWeEH2FpH50S8ctME2xpv-tLKtI')
+# cloudinary.config(
+#   cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'dol3eg0to'),
+#   api_key=os.getenv('CLOUDINARY_API_KEY', '843678846326154'),
+#   api_secret=os.getenv('CLOUDINARY_API_SECRET', 'qWeEH2FpH50S8ctME2xpv-tLKtI')
+# )
+cloudinary.config( 
+  cloud_name = 'dol3eg0to',
+  api_key = '843678846326154',
+  api_secret = 'qWeEH2FpH50S8ctME2xpv-tLKtI'
 )
 
 # Configure SQLAlchemy metadata

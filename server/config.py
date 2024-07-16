@@ -57,6 +57,6 @@ jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 
 # Enable CORS
-CORS(app)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://autoavenuebackend.onrender.com"]}})
 Session(app)
 

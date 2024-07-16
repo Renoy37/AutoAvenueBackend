@@ -23,6 +23,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Configure secret key
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', '6554jjk[nhj]gh//#bfd')
+# Export SECRET_KEY for other modules
+SECRET_KEY = app.config['SECRET_KEY']
 
 # Configure session type
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -52,3 +54,4 @@ bcrypt = Bcrypt(app)
 # Enable CORS
 CORS(app)
 Session(app)
+

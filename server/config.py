@@ -22,7 +22,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:/
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Configure secret key
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'hgcfyi876tgh')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', '6554jjk[nhj]gh//#bfd')
 
 # Configure session type
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -31,7 +31,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 cloudinary.config(
   cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'dol3eg0to'),
   api_key=os.getenv('CLOUDINARY_API_KEY', '843678846326154'),
-  api_secret=os.getenv('CLOUDINARY_API_SECRET', '3k2jb4v56bn5m4,l3;4l5kmn6bv7')
+  api_secret=os.getenv('CLOUDINARY_API_SECRET', 'qWeEH2FpH50S8ctME2xpv-tLKtI')
 )
 
 # Configure SQLAlchemy metadata

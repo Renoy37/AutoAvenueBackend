@@ -21,6 +21,7 @@ flask-session = "*"
 flask-bcrypt = "*"
 cloudinary = "*"
 faker = "*"
+importlib-metadata = "*"
 
 [dev-packages]
 

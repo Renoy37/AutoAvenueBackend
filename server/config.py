@@ -63,9 +63,9 @@ bcrypt = Bcrypt(app)
 # CORS(app, resources={
 #     r"/*": {
 #         "origins": [
-#             "http://localhost:5173",
-#             "https://autoavenuebackend.onrender.com",
-#             "http://127.0.0.1:5555"
+#             "http://localhost:5173/",
+#             "https://autoavenuebackend.onrender.com/",
+#             "http://127.0.0.1:5555/"
 #         ]
 #     }
 # })

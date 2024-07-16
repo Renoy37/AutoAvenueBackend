@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -33,13 +33,14 @@ app.config['SESSION_TYPE'] = 'filesystem'
 # cloudinary.config(
 #   cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME', 'dol3eg0to'),
 #   api_key=os.getenv('CLOUDINARY_API_KEY', '843678846326154'),
-#   api_secret=os.getenv('CLOUDINARY_API_SECRET', 'qWeEH2FpH50S8ctME2xpv-tLKtI')
+#   api_secret=os.getenv('CLOUDINARY_API_SECRET', 'bv65hb4jk3j5bhI')
 # )
 cloudinary.config( 
   cloud_name = 'dol3eg0to',
   api_key = '843678846326154',
   api_secret = 'qWeEH2FpH50S8ctME2xpv-tLKtI'
 )
+
 
 # Configure SQLAlchemy metadata
 metadata = MetaData(naming_convention={
@@ -59,4 +60,5 @@ bcrypt = Bcrypt(app)
 # Enable CORS
 CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://autoavenuebackend.onrender.com"]}})
 Session(app)
+
 

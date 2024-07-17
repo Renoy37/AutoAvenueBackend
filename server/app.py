@@ -156,7 +156,8 @@ def home():
 
 # Get All Cars Endpoint
 class Cars(Resource):
-    @cross_origin(allow_headers=['Content-Type'])
+    # @cross_origin(allow_headers=['Content-Type'])
+    @cross_origin()
     def get(self):
         try:
             cars = Car.query.all()
@@ -169,7 +170,8 @@ class Cars(Resource):
 
 # Place an Order Endpoint (Revised Edition)
 class PlaceOrder(Resource):
-    @cross_origin(allow_headers=['Content-Type'])
+    # @cross_origin(allow_headers=['Content-Type'])
+    @cross_origin()
     @jwt_required()
     def post(self):
         user_id = get_jwt_identity()
@@ -208,7 +210,8 @@ class PlaceOrder(Resource):
 
 # Delete an Order Endpoint
 class DeleteOrder(Resource):
-    @cross_origin(allow_headers=['Content-Type'])
+    # @cross_origin(allow_headers=['Content-Type'])
+    @cross_origin()
     @jwt_required()
     def delete(self, order_id):
         try:

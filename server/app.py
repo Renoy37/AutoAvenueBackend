@@ -229,10 +229,13 @@ class DeleteOrder(Resource):
 # CORS handling for OPTIONS requests
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:5173')
+    # Ensure single origin handling
+    allowed_origin = 'http://localhost:5173'
+    response.headers.add('Access-Control-Allow-Origin', allowed_origin)
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
+
 
 # Handle preflight requests
 @app.route('/api/<path:path>', methods=['OPTIONS'])

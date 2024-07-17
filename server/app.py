@@ -156,7 +156,7 @@ def home():
 
 # Get All Cars Endpoint
 class Cars(Resource):
-    @cross_origin()
+    @cross_origin(allow_headers=['Content-Type'])
     def get(self):
         try:
             cars = Car.query.all()

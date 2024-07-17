@@ -9,7 +9,7 @@ from flask_cors import CORS, cross_origin
 auth_bp = Blueprint('auth_bp', __name__)
 
 class Register(Resource):
-    @cross_origin()
+    @cross_origin(origin='*')
     def post(self):
         try:
             data = request.get_json()
@@ -38,7 +38,7 @@ class Register(Resource):
             return {'message': str(e)}, 500
 
 class Login(Resource):
-    @cross_origin()
+    @cross_origin(origin='*')
     def post(self):
         try:
             data = request.get_json()

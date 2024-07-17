@@ -18,6 +18,7 @@ load_dotenv()
 app = Flask(__name__)
 # CORS(app)
 
+
 # Configure database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

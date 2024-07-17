@@ -14,15 +14,16 @@ logger = logging.getLogger(__name__)
 
 seller_bp = Blueprint('seller_bp', __name__)
 
+# Get Seller Products Endpoint
 class GetSellerProducts(Resource):
     @jwt_required()
     def get(self):
         try:
             seller_id = get_jwt_identity()
-            print(f"Seller ID: {seller_id}")  # Debug statement
+            logger.debug(f"Fetching products for seller ID: {seller_id}")
 
             products = Car.query.filter_by(seller_id=seller_id).all()
-            print(f"Products: {products}")  # Debug statement
+            logger.debug(f"Fetched products: {products}")
 
             if not products:
                 return make_response(jsonify({"Message": "No products present"}), 404)
@@ -30,17 +31,16 @@ class GetSellerProducts(Resource):
             return make_response(jsonify([product.to_dict() for product in products]), 200)
 
         except SQLAlchemyError as e:
-            print(f"SQLAlchemyError: {str(e)}")  # Debug statement
+            logger.error(f"Database error: {e}")
             return make_response(jsonify({"Message": "Database error occurred", "Error": str(e)}), 500)
 
         except HTTPException as e:
-            print(f"HTTPException: {str(e)}")  # Debug statement
+            logger.error(f"HTTP error: {e}")
             return make_response(jsonify({"Message": "HTTP error occurred", "Error": str(e)}), e.code)
 
         except Exception as e:
-            print(f"Exception: {str(e)}")  # Debug statement
+            logger.error(f"Unexpected error: {e}")
             return make_response(jsonify({"Message": "An unexpected error occurred", "Error": str(e)}), 500)
-
 
 # Add New Product Endpoint
 class AddProducts(Resource):

@@ -3,7 +3,7 @@ from models import User
 from config import db
 from flask_jwt_extended import create_access_token
 from flask_restful import Resource
-from flask_cors import CORS, cross_origin
+from flask_cors import  cross_origin
 
 
 auth_bp = Blueprint('auth_bp', __name__)

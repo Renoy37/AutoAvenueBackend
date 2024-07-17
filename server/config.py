@@ -18,15 +18,17 @@ load_dotenv()
 app = Flask(__name__)
 # CORS(app)
 # Enable CORS for the entire application
-CORS(app, resources={
-    r"/*": {
-        "origins": [
-            "http://localhost:5173",
-            "https://autoavenuebackend.onrender.com",
-            "http://127.0.0.1:5555"
-        ]
-    }
-})
+# CORS(app, resources={
+#     r"/*": {
+#         "origins": [
+#             "http://localhost:5173",
+#             "https://autoavenuebackend.onrender.com",
+#             "http://127.0.0.1:5555"
+#         ]
+#     }
+# })
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "https://autoavenuebackend.onrender.com"]}})
+
 
 # Configure database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///autoavenue.db')

@@ -144,7 +144,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from seller import HelloSeller, GetSellerProducts, DeleteProduct, AddProducts, GetSellerOrders
 from oauth import Register, Login
 from datetime import datetime
-from flask_cors import cross_origin
+# from flask_cors import cross_origin
 
 
 
@@ -157,7 +157,7 @@ def home():
 # Get All Cars Endpoint
 class Cars(Resource):
     # @cross_origin(allow_headers=['Content-Type'])
-    @cross_origin()
+    # @cross_origin()
     def get(self):
         try:
             cars = Car.query.all()
@@ -171,7 +171,7 @@ class Cars(Resource):
 # Place an Order Endpoint (Revised Edition)
 class PlaceOrder(Resource):
     # @cross_origin(allow_headers=['Content-Type'])
-    @cross_origin()
+    # @cross_origin()
     @jwt_required()
     def post(self):
         user_id = get_jwt_identity()
@@ -211,7 +211,7 @@ class PlaceOrder(Resource):
 # Delete an Order Endpoint
 class DeleteOrder(Resource):
     # @cross_origin(allow_headers=['Content-Type'])
-    @cross_origin()
+    # @cross_origin()
     @jwt_required()
     def delete(self, order_id):
         try:
@@ -226,28 +226,28 @@ class DeleteOrder(Resource):
             return make_response(jsonify({"Message": "Error deleting order", "Error": str(e)}), 500)
 
 
-# CORS handling for OPTIONS requests
-@app.after_request
-def after_request(response):
-    # Ensure single origin handling
-    allowed_origin = 'http://localhost:5173'
-    response.headers.add('Access-Control-Allow-Origin', allowed_origin)
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-    return response
+# # CORS handling for OPTIONS requests
+# @app.after_request
+# def after_request(response):
+#     # Ensure single origin handling
+#     allowed_origin = 'http://localhost:5173'
+#     response.headers.add('Access-Control-Allow-Origin', allowed_origin)
+#     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+#     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+#     return response
 
 
-# Handle preflight requests
-@app.route('/api/<path:path>', methods=['OPTIONS'])
-def handle_options(path):
-    return build_cors_preflight_response()
+# # Handle preflight requests
+# @app.route('/api/<path:path>', methods=['OPTIONS'])
+# def handle_options(path):
+#     return build_cors_preflight_response()
 
-def build_cors_preflight_response():
-    response = make_response()
-    response.headers.add("Access-Control-Allow-Origin", "http://localhost:5173")
-    response.headers.add('Access-Control-Allow-Headers', "Content-Type,Authorization")
-    response.headers.add('Access-Control-Allow-Methods', "GET,PUT,POST,DELETE,OPTIONS")
-    return response
+# def build_cors_preflight_response():
+#     response = make_response()
+#     response.headers.add("Access-Control-Allow-Origin", "http://localhost:5173")
+#     response.headers.add('Access-Control-Allow-Headers', "Content-Type,Authorization")
+#     response.headers.add('Access-Control-Allow-Methods', "GET,PUT,POST,DELETE,OPTIONS")
+#     return response
 
 
 # Add Resources to API

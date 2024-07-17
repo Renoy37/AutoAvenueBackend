@@ -144,6 +144,8 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from seller import HelloSeller, GetSellerProducts, DeleteProduct, AddProducts, GetSellerOrders
 from oauth import Register, Login
 from datetime import datetime
+from flask_cors import CORS, cross_origin
+
 
 
 # Default route
@@ -154,6 +156,7 @@ def home():
 
 # Get All Cars Endpoint
 class Cars(Resource):
+    @cross_origin()
     def get(self):
         try:
             cars = Car.query.all()
@@ -166,6 +169,7 @@ class Cars(Resource):
 
 # Place an Order Endpoint (Revised Edition)
 class PlaceOrder(Resource):
+    @cross_origin()
     @jwt_required()
     def post(self):
         user_id = get_jwt_identity()
@@ -204,6 +208,7 @@ class PlaceOrder(Resource):
 
 # Delete an Order Endpoint
 class DeleteOrder(Resource):
+    @cross_origin()
     @jwt_required()
     def delete(self, order_id):
         try:

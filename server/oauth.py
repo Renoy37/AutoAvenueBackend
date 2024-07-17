@@ -3,10 +3,13 @@ from models import User
 from config import db
 from flask_jwt_extended import create_access_token
 from flask_restful import Resource
+from flask_cors import CORS, cross_origin
+
 
 auth_bp = Blueprint('auth_bp', __name__)
 
 class Register(Resource):
+    @cross_origin()
     def post(self):
         try:
             data = request.get_json()
@@ -35,6 +38,7 @@ class Register(Resource):
             return {'message': str(e)}, 500
 
 class Login(Resource):
+    @cross_origin()
     def post(self):
         try:
             data = request.get_json()

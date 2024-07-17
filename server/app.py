@@ -169,7 +169,7 @@ class Cars(Resource):
 
 # Place an Order Endpoint (Revised Edition)
 class PlaceOrder(Resource):
-    @cross_origin()
+    @cross_origin(allow_headers=['Content-Type'])
     @jwt_required()
     def post(self):
         user_id = get_jwt_identity()
@@ -208,7 +208,7 @@ class PlaceOrder(Resource):
 
 # Delete an Order Endpoint
 class DeleteOrder(Resource):
-    @cross_origin()
+    @cross_origin(allow_headers=['Content-Type'])
     @jwt_required()
     def delete(self, order_id):
         try:
@@ -231,8 +231,9 @@ def after_request(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
 
-@app.route('/api/orders', methods=['OPTIONS'])
-def handle_orders_options():
+# Handle preflight requests
+@app.route('/api/<path:path>', methods=['OPTIONS'])
+def handle_options(path):
     return build_cors_preflight_response()
 
 def build_cors_preflight_response():
@@ -241,6 +242,7 @@ def build_cors_preflight_response():
     response.headers.add('Access-Control-Allow-Headers', "Content-Type,Authorization")
     response.headers.add('Access-Control-Allow-Methods', "GET,PUT,POST,DELETE,OPTIONS")
     return response
+
 
 # Add Resources to API
 api.add_resource(Register, '/api/register')

@@ -17,7 +17,7 @@ load_dotenv()
 # Initialize Flask app
 app = Flask(__name__)
 # CORS(app)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://autoavenuebackend.onrender.com", "http://127.0.0.1:5555"]}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "https://autoavenuebackend.onrender.com", "http://127.0.0.1:5555", "https://autoavenue.netlify.app"]}})
 # Configure CORS to allow specific origins and methods
 # CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://127.0.0.1:5555", "http://127.0.0.1:5000" , "https://autoavenuebackend.onrender.com"], 
 #                                  "methods": ["GET", "PUT", "POST", "DELETE", "OPTIONS"], 

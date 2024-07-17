@@ -144,7 +144,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from seller import HelloSeller, GetSellerProducts, DeleteProduct, AddProducts, GetSellerOrders
 from oauth import Register, Login
 from datetime import datetime
-from flask_cors import CORS, cross_origin
+from flask_cors import cross_origin
 
 
 
